@@ -1,6 +1,6 @@
 module.exports = {
     permission: 3,
-    description: "Reload's a command's plugin",
+    description: "Reloads a command's plugin",
     usage: "reload <module>",
     script: function(args)
     {
