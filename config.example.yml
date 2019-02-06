@@ -7,3 +7,5 @@ database:
 sentry:
   enabled: false
   dsn: "SENTRY_DSN_HERE"
+developers:
+  - "USER_ID_HERE"
