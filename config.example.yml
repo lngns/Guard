@@ -4,3 +4,6 @@ bot:
 database:
   name: "MONGO_DB_NAME_HERE"
   cluster: "MONGO_CLUSTER_URL_HERE"
+sentry:
+  enabled: false
+  dsn: "SENTRY_DSN_HERE"
