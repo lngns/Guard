@@ -45,6 +45,10 @@ class PluginManager
             }
         }
     }
+    reload(name)
+    {
+        this.plugins[name].reload();
+    }
 }
 
 module.exports = PluginManager;
