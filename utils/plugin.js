@@ -27,7 +27,7 @@ class PluginManager
     constructor()
     {
         this.plugins = {};
-        Sys.readdir("../plugins", (err, files) => {
+        Sys.readdir("plugins", (err, files) => {
             if(err) throw new Error(err.message);
             files.forEach(file => {
                 let plugin = file.replace(".js", "");
