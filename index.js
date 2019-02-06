@@ -17,7 +17,12 @@ Client.on("ready", async () => {
 Client.on("message", async (msg) => {
     if(!msg.author.bot && msg.content.startsWith(Config.bot.prefix))
     {
+        let permission = 0;
         let tokens = msg.content.replace(Config.bot.prefix, "").split(" ");
+        let guild = await Database.collection("Guilds").findOne({ id: msg.guild.id });
+        if(msg.member.roles.exists(guild.modrole) == true) permission = 1;
+        if(msg.member.hasPermission("ADMINISTRATOR") == true) permission = 2;
+        if(Config.developers.indexOf(msg.author.id) > -1) permission = 3;
     }
 });
 
