@@ -1,0 +1,30 @@
+{
+  "name": "guard",
+  "version": "0.1.0",
+  "description": "Guard is a moderation and utility bot written in JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FalseData/Guard.git"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "moderation",
+    "utility",
+    "mongo",
+    "database",
+    "promises",
+    "js",
+    "node"
+  ],
+  "author": "falsedata",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/FalseData/Guard/issues"
+  },
+  "homepage": "https://github.com/FalseData/Guard#readme"
+}
