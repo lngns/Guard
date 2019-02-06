@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/FalseData/Guard#readme",
   "dependencies": {
+    "chalk": "^2.4.2",
     "discord.js": "^11.4.2",
     "node-yaml": "^3.1.1"
   }
