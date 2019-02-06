@@ -30,6 +30,7 @@
   "dependencies": {
     "chalk": "^2.4.2",
     "discord.js": "^11.4.2",
+    "mongodb": "^3.1.13",
     "node-yaml": "^3.1.1"
   }
 }
