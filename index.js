@@ -12,7 +12,12 @@ Client.on("ready", async () => {
     Logger.log(Logger.INFO, "Connected to discord");
 });
 
-Client.on("message", async (msg) => {});
+Client.on("message", async (msg) => {
+    if(!msg.author.bot && msg.content.startsWith(Config.bot.prefix))
+    {
+        let tokens = msg.content.replace(Config.bot.prefix, "").split(" ");
+    }
+});
 
 MongoDB.connect(Config.database.cluster, {useNewUrlParser: true}).then(dbClient => {
     Database = dbClient.db(Config.database.name);
