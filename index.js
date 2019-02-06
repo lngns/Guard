@@ -1,11 +1,13 @@
 const Discord = require("discord.js");
 const MongoDB = require("mongodb").MongoClient;
 const LoggerUtil = require("./utils/logger");
+const PluginUtil = require("./utils/plugin");
 const Yaml = require("node-yaml");
 
 const Config = Yaml.readSync("config.yml");
 const Logger = new LoggerUtil(Config);
 const Client = new Discord.Client();
+const Plugins = new PluginUtil();
 let Database = null;
 
 Client.on("ready", async () => {
