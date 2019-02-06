@@ -23,6 +23,11 @@ Client.on("message", async (msg) => {
         if(msg.member.roles.exists(guild.modrole) == true) permission = 1;
         if(msg.member.hasPermission("ADMINISTRATOR") == true) permission = 2;
         if(Config.developers.indexOf(msg.author.id) > -1) permission = 3;
+        Plugins.run(tokens[0], {
+            message: msg, config: Config, discord: Discord,
+            client: Client, tokens: tokens, logger: Logger,
+            plugins: Plugins, database: Database
+        }, permission);
     }
 });
 
