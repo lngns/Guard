@@ -12,6 +12,7 @@ let Database = null;
 
 Client.on("ready", async () => {
     Logger.log(Logger.INFO, "Connected to discord");
+    setInterval(syncGuilds, 60000 * 5);
 });
 
 Client.on("message", async (msg) => {
@@ -39,3 +40,21 @@ MongoDB.connect(Config.database.cluster, {useNewUrlParser: true}).then(dbClient 
         process.exit(0);
     });
 }).catch(err => Logger.log(Logger.ERROR, err.message));
+
+function syncGuilds()
+{
+    Client.syncGuilds();
+    Client.guilds.forEach(async (g) => {
+        let guild = await Database.collection("Guilds").findOne({ id: g.id });
+        if(guild == null)
+        {
+            Logger.log(Logger.INFO, `Guild ${g.name} initialized`);
+            Database.collection("Guilds").insertOne({
+                id: g.id, owner: g.ownerID, modrole: null, 
+                muterole: null, logchannel: null, infractions: {},
+                antiraid: {enabled: false, type: 0}, antispam: {enabled: false, level: 1},
+                antihoist: {enabled: false, list:[]}, filters: {enabled: false, list: []}
+            });
+        }
+    });
+}
