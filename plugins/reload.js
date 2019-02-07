@@ -1,7 +1,7 @@
 module.exports = {
     permission: 3,
     description: "Reloads a command's plugin",
-    usage: "reload <module>",
+    usage: "reload <plugin>",
     script: function(args)
     {
         if(args.plugins.plugins[args.tokens[1]])
