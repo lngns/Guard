@@ -12,6 +12,7 @@ let Database = null;
 
 Client.on("ready", async () => {
     Logger.log(Logger.INFO, "Connected to discord");
+    Client.user.setActivity(Config.bot.prefix + "commands", { type: "WATCHING" });
 });
 
 Client.on("message", async (msg) => {
