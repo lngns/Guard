@@ -8,13 +8,16 @@ module.exports = {
         {
             try {
                 args.plugins.reload(args.tokens[1]);
-                args.message.channel.send(`Reloaded plugin \`${args.tokens[1]}\` successfully`);
+                args.message.channel.send(args.translator.translate("reloadsuccess", [args.tokens[1]]));
             } catch(err) {
                 let reason = "```js\n" + err.stack + "```";
-                args.message.channel.send(`The plugin \`${args.tokens[1]}\` failed to reload ${reason}`);
+                args.message.channel.send(args.translator.translate("reloadfail", [
+                    args.tokens[1],
+                    reason
+                ]));
             }
         } else {
-            args.message.channel.send(`The plugin \`${args.tokens[1]}\` does not exist`);
+            args.message.channel.send(args.translator.translate("invalidplugin", [args.tokens[1]]));
         }
     }
 };
