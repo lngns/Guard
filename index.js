@@ -38,8 +38,7 @@ Client.on("guildCreate", async (g) => {
     {
         Logger.log(Logger.INFO, `Guild ${g.name} initialized`);
         Database.collection("Guilds").insertOne({
-            id: g.id, owner: g.ownerID, modrole: null, 
-            muterole: null, logchannel: null, infractions: {},
+            id: g.id, owner: g.ownerID, modrole: null, muterole: null, logchannel: null,
             antiraid: {enabled: false, type: 0}, antispam: {enabled: false, level: 1},
             antihoist: {enabled: false, list:[]}, filters: {enabled: false, list: []}
         });
