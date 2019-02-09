@@ -17,7 +17,7 @@ class Infraction
     }
     remove(id = 0)
     {
-        this.database.collection("Infractions").deleteOne({ id: id });
+        this.database.collection("Infractions").findOneAndUpdate({ id: id }, { "$set": { available: false }}, { upsert: false });
     }
     async get(id = 0)
     {
