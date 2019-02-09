@@ -11,7 +11,8 @@ class Infraction
             id: count + 1,
             userid: user,
             reason: reason,
-            guildid: guild
+            guildid: guild,
+            available: true
         });
     }
     remove(id = 0)
@@ -21,8 +22,9 @@ class Infraction
     async get(id = 0)
     {
         let infraction = await this.database.collection("Infractions").findOne({ id: id }, { limit: 1 });
-        
-        return infraction;
+        if(infraction.available) return infraction;
+
+        return null;
     }
 }
 
