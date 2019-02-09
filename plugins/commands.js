@@ -7,6 +7,6 @@ module.exports = {
         let commandList = [];
         let commands = args.plugins.plugins;
         for(let cmd in commands) commandList.push(commands[cmd].name);
-        args.message.channel.send(`Available Commands: \`${commandList.join(", ")}\``);
+        args.message.channel.send(args.translator.translate("commands", [commandList.join(", ")]));
     }
 };
