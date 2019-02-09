@@ -13,7 +13,7 @@ const Plugins = new PluginUtil();
 let Database = null;
 
 Client.on("ready", async () => {
-    Logger.log(Logger.INFO, "Connected to discord");
+    Logger.log(Logger.INFO, Translator.translate("connected", ["discord"]));
     Client.user.setActivity(Config.bot.prefix + "commands", { type: "WATCHING" });
 });
 
@@ -38,7 +38,7 @@ Client.on("guildCreate", async (g) => {
     let guild = await Database.collection("Guilds").findOne({ id: g.id });
     if(guild == null)
     {
-        Logger.log(Logger.INFO, `Guild ${g.name} initialized`);
+        Logger.log(Logger.INFO, Translator.translate("initialized", [g.name]));
         Database.collection("Guilds").insertOne({
             id: g.id, owner: g.ownerID, modrole: null, muterole: null, logchannel: null,
             antiraid: {enabled: false, type: 0}, antispam: {enabled: false, level: 1},
@@ -49,7 +49,7 @@ Client.on("guildCreate", async (g) => {
 
 MongoDB.connect(Config.database.cluster, {useNewUrlParser: true}).then(dbClient => {
     Database = dbClient.db(Config.database.name);
-    Logger.log(Logger.INFO, "Connected to database");
+    Logger.log(Logger.INFO, Translator.translate("connected", ["database"]));
     Client.login(Config.bot.token).catch(err => {
         Logger.log(Logger.ERROR, err.message);
         process.exit(0);
