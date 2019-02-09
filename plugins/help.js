@@ -6,16 +6,21 @@ module.exports = {
     {
         if(args.plugins.plugins[args.tokens[1]])
         {
-            let permissionLevel = "Guild Member";
+            let permissionLevel = args.translator.translate("guildmember", []);
             let plugin = args.plugins.plugins[args.tokens[1]];
-            if(plugin.permission == 1) permissionLevel = "Guild Moderator";
-            if(plugin.permission == 2) permissionLevel = "Guild Administrator";
-            if(plugin.permission == 3) permissionLevel = "Bot Developer";
-            args.message.channel.send("```md\n" + args.config.bot.prefix + plugin.usage + "\n" + plugin.description + "\nPermission Level: " + permissionLevel + "```")
+            if(plugin.permission == 1) permissionLevel = args.translator.translate("guildmoderator", []);
+            if(plugin.permission == 2) permissionLevel = args.translator.translate("guildadministrator", []);
+            if(plugin.permission == 3) permissionLevel = args.translator.translate("botdeveloper", []);
+            args.message.channel.send(args.translator.translate("commandinfo", [
+                args.config.bot.prefix,
+                plugin.usage,
+                plugin.description,
+                permissionLevel
+            ]));
         } else if(!args.tokens[1]) {
-            args.message.channel.send(`Enter a plugin to get information on`);
+            args.message.channel.send(args.translator.translate("noplugin", []));
         } else {
-            args.message.channel.send(`The plugin \`${args.tokens[1]}\` does not exist`);
+            args.message.channel.send(args.translator.translate("invalidplugin", [args.tokens[1]]));
         }
     }
 };
