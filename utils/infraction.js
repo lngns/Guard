@@ -28,7 +28,7 @@ class Infraction
     }
     async search(user = "", guild = "", index = 0)
     {
-        let infractions = await this.database.collection("Infractions").find({ userid: user, guildid: guild }, { limit: 10, skip: index });
+        let infractions = await this.database.collection("Infractions").find({ userid: user, guildid: guild }, { limit: 5, skip: index });
         
         return infractions;
     }
