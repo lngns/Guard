@@ -2,9 +2,11 @@ const Discord = require("discord.js");
 const MongoDB = require("mongodb").MongoClient;
 const LoggerUtil = require("./utils/logger");
 const PluginUtil = require("./utils/plugin");
+const TranslationUtil = require("./utils/translator");
 const Yaml = require("node-yaml");
 
 const Config = Yaml.readSync("config.yml");
+const Translator = new TranslationUtil(Config);
 const Logger = new LoggerUtil(Config);
 const Client = new Discord.Client();
 const Plugins = new PluginUtil();
@@ -27,7 +29,7 @@ Client.on("message", async (msg) => {
         Plugins.run(tokens[0], {
             message: msg, config: Config, discord: Discord,
             client: Client, tokens: tokens, logger: Logger,
-            plugins: Plugins, database: Database
+            plugins: Plugins, database: Database, translator: Translator
         }, permission);
     }
 });
