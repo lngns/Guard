@@ -11,7 +11,7 @@ class Infraction
             id: count + 1,
             userid: user,
             reason: reason,
-            guildid: guild,
+            guildid: guild, 
             available: true
         });
     }
@@ -19,12 +19,18 @@ class Infraction
     {
         this.database.collection("Infractions").findOneAndUpdate({ id: id }, { "$set": { available: false }}, { upsert: false });
     }
-    async get(id = 0)
+    async get(id = 0, guild = "")
     {
-        let infraction = await this.database.collection("Infractions").findOne({ id: id }, { limit: 1 });
+        let infraction = await this.database.collection("Infractions").findOne({ id: id, guildid: guild }, { limit: 1 });
         if(infraction.available) return infraction;
 
         return null;
+    }
+    async search(user = "", guild = "", index = 0)
+    {
+        let infractions = await this.database.collection("Infractions").find({ userid: user, guildid: guild }, { limit: 10, skip: index });
+        
+        return infractions;
     }
 }
 
