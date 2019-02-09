@@ -4,10 +4,11 @@ class Infraction
     {
         this.database = database;
     }
-    add(user = "", guild = "", reason = "")
+    async add(user = "", guild = "", reason = "")
     {
+        let count = await this.database.collection("Infractions").countDocuments();
         this.database.collection("Infractions").insertOne({
-            id: this.database.collection("Infractions").count() + 1,
+            id: count + 1,
             userid: user,
             reason: reason,
             guildid: guild
@@ -17,9 +18,11 @@ class Infraction
     {
         this.database.collection("Infractions").deleteOne({ id: id });
     }
-    get(id = 0)
+    async get(id = 0)
     {
-        this.database.collection("Infractions").findOne({ id: id }, { limit: 1 });
+        let infraction = await this.database.collection("Infractions").findOne({ id: id }, { limit: 1 });
+        
+        return infraction;
     }
 }
 
