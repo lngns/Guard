@@ -12,7 +12,8 @@ while still being powerful.
 5. Customize all the values in the config to desired values
 6. In MongoDB Atlas (assuming you're using it) create a database called `Guard`
 7. Make the default collection in the database `Guilds`
-8. Finally run the bot with `npm start`
+8. Create another collection with the name `Infractions`
+9. Finally run the bot with `npm start`
 
 ### Support
 [![Server Banner](https://discordapp.com/api/guilds/542549878987816960/embed.png?style=banner2)](https://discord.gg/neAuN9n)
