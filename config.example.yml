@@ -1,5 +1,6 @@
 bot:
   prefix: "BOT_PREFIX_HERE"
+  locale: "BOT_LOCALE_HERE"
   token: "BOT_TOKEN_HERE"
 database:
   name: "MONGO_DB_NAME_HERE"
