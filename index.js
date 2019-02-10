@@ -15,7 +15,7 @@ let Infractions = null;
 let Database = null;
 
 Client.on("ready", async () => {
-    Logger.log(Logger.INFO, Translator.translate("connected", ["discord"]));
+    Logger.log(Logger.INFO, Translator.translate("connected", ["Discord"]));
     Client.user.setActivity(Config.bot.prefix + "commands", { type: "WATCHING" });
     Infractions = new InfractionUtil(Database);
 });
@@ -53,7 +53,7 @@ Client.on("guildCreate", async (g) => {
 
 MongoDB.connect(Config.database.cluster, {useNewUrlParser: true}).then(dbClient => {
     Database = dbClient.db(Config.database.name);
-    Logger.log(Logger.INFO, Translator.translate("connected", ["database"]));
+    Logger.log(Logger.INFO, Translator.translate("connected", ["MongoDB"]));
     Client.login(Config.bot.token).catch(err => {
         Logger.log(Logger.ERROR, err.message);
         process.exit(0);
