@@ -49,6 +49,17 @@ class PluginManager
     {
         this.plugins[name].reload();
     }
+    load()
+    {
+        this.plugins = {};
+        Sys.readdir("plugins", (err, files) => {
+            if(err) throw new Error(err.message);
+            files.forEach(file => {
+                let plugin = file.replace(".js", "");
+                this.plugins[plugin] = new Plugin(plugin);
+            });
+        });
+    }
 }
 
 module.exports = PluginManager;
