@@ -47,7 +47,7 @@ Client.on("message", async (msg) => {
             message: msg, config: Config, discord: Discord,
             client: Client, tokens: tokens, logger: Logger,
             plugins: Plugins, database: Database, translator: Translator,
-            infractions: Infractions
+            infractions: Infractions, permission: permission
         }, permission);
     }
 });
