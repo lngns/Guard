@@ -13,7 +13,7 @@ class Translator
         {
             translated = translated.replace("{}", params[p]);
         }
-        
+        if (!translated) return Yaml.readSync("../lang/en_US.yml")[phrase]
         return translated;
     }
 }
