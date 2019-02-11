@@ -10,8 +10,8 @@ module.exports = {
         for(let role in roles)
         {
             let r = roles[role];
-            roleStr.push(r.name + " - " + r.id);
+            roleStr.push(r.name + " <" + r.id + ">");
         }
-        args.message.channel.send("```\n" + roleStr.join("\n") + "```\n");
+        args.message.channel.send("```md\n" + roleStr.join("\n") + "```\n");
     }
 };
