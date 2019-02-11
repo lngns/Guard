@@ -6,8 +6,10 @@ module.exports = {
     usage: "pull",
     script: function(args)
     {
-        Sys.execSync("git pull");
-        args.message.channel.send(args.translator.translate("pullcomplete", []));
-        process.exit(0);
+        let output = Sys.execSync("git pull");
+        args.message.channel.send(args.translator.translate("pullcomplete", [output]));
+        setTimeout(() => {
+            process.exit(0);
+        }, 1500);
     }
 };
