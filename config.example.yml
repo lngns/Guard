@@ -5,6 +5,10 @@ bot:
 database:
   name: "MONGO_DB_NAME_HERE"
   cluster: "MONGO_CLUSTER_URL_HERE"
+cachet:
+  enabled: false
+  url: "CACHET_URL_HERE"
+  key: "CACHET_KEY_HERE"
 sentry:
   enabled: false
   dsn: "SENTRY_DSN_HERE"

@@ -4,6 +4,7 @@ const LoggerUtil = require("./utils/logger");
 const PluginUtil = require("./utils/plugin");
 const TranslationUtil = require("./utils/translator");
 const InfractionUtil = require("./utils/infraction");
+const CachetApi = require("cachet-api");
 const Yaml = require("node-yaml");
 
 const Config = Yaml.readSync("config.yml");
@@ -18,6 +19,19 @@ Client.on("ready", async () => {
     Logger.log(Logger.INFO, Translator.translate("connected", ["Discord"]));
     Client.user.setActivity(Config.bot.prefix + "commands", { type: "WATCHING" });
     Infractions = new InfractionUtil(Database);
+    if(Config.cachet.enabled)
+    {
+        const Cachet = new CachetApi({
+            url: Config.cachet.url,
+            apiKey: Config.cachet.key
+        });
+        setInterval(() => {
+            Cachet.publishMetricPoint({
+                id: 1,
+                value: Client.ping.toFixed(0)
+            });
+        }, 60000);
+    }
 });
 
 Client.on("message", async (msg) => {
