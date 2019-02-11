@@ -9,6 +9,7 @@ cachet:
   enabled: false
   url: "CACHET_URL_HERE"
   key: "CACHET_KEY_HERE"
+  interval: 0 # in seconds
 sentry:
   enabled: false
   dsn: "SENTRY_DSN_HERE"

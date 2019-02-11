@@ -30,7 +30,7 @@ Client.on("ready", async () => {
                 id: 1,
                 value: Client.ping.toFixed(0)
             });
-        }, 60000);
+        }, Config.cachet.interval * 1000);
     }
 });
 
