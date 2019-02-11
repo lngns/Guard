@@ -4,20 +4,30 @@ module.exports = {
     usage: "reload <plugin>",
     script: function(args)
     {
-        if(args.plugins.plugins[args.tokens[1]])
+        if(args.tokens[1] == "all")
         {
             try {
-                args.plugins.reload(args.tokens[1]);
-                args.message.channel.send(args.translator.translate("reloadsuccess", [args.tokens[1]]));
+                args.plugins.load();
+                args.message.channel.send(args.translator.translate("massreloadsuccess", []));
             } catch(err) {
-                let reason = "```js\n" + err.stack + "```";
-                args.message.channel.send(args.translator.translate("reloadfail", [
-                    args.tokens[1],
-                    reason
-                ]));
+                args.message.channel.send(args.translator.translate("massreloadfail", [err.trace]));
             }
         } else {
-            args.message.channel.send(args.translator.translate("invalidplugin", [args.tokens[1]]));
+            if(args.plugins.plugins[args.tokens[1]])
+            {
+                try {
+                    args.plugins.reload(args.tokens[1]);
+                    args.message.channel.send(args.translator.translate("reloadsuccess", [args.tokens[1]]));
+                } catch(err) {
+                    let reason = "```js\n" + err.stack + "```";
+                    args.message.channel.send(args.translator.translate("reloadfail", [
+                        args.tokens[1],
+                        reason
+                    ]));
+                }
+            } else {
+                args.message.channel.send(args.translator.translate("invalidplugin", [args.tokens[1]]));
+            }
         }
     }
 };
