@@ -8,7 +8,7 @@ module.exports = {
         let commands = args.plugins.plugins;
         for(let cmd in commands)
         {
-            if(commands[cmd].permission <= args.permssion)
+            if(commands[cmd].permission <= args.permission)
             {
                 commandList.push(`${commands[cmd].name} - ${commands[cmd].description}`);
             }
