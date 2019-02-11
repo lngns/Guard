@@ -24,7 +24,7 @@ module.exports = {
             {
                 if(commands[cmd].permission <= args.permission)
                 {
-                    commandList.push(`${commands[cmd].name} - ${commands[cmd].description}`);
+                    commandList.push(`<${commands[cmd].name}> ${commands[cmd].description}`);
                 }
             }
             args.message.channel.send(args.translator.translate("commands", [commandList.join("\n")]));
