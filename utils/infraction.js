@@ -4,14 +4,16 @@ class Infraction
     {
         this.database = database;
     }
-    async add(user = "", guild = "", reason = "")
+    async add(info = { user: "", guild: "", reason: "", timestamp: 0, mod: ""})
     {
         let count = await this.database.collection("Infractions").countDocuments();
         this.database.collection("Infractions").insertOne({
             id: count + 1,
-            userid: user,
-            reason: reason,
-            guildid: guild, 
+            userid: info.user,
+            reason: info.reason,
+            guildid: info.guild,
+            modid: info.mod,
+            timestamp: info.timestamp, 
             available: true
         });
     }
