@@ -17,7 +17,7 @@ let Database = null;
 
 Client.on("ready", async () => {
     Logger.log(Logger.INFO, Translator.translate("connected", ["Discord"]));
-    Client.user.setActivity(Config.bot.prefix + "commands", { type: "WATCHING" });
+    Client.user.setActivity(Config.bot.prefix + "help", { type: "WATCHING" });
     Infractions = new InfractionUtil(Database);
     if(Config.cachet.enabled)
     {
