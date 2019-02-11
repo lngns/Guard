@@ -1,6 +1,6 @@
 connected: "Connected to {}"
 initialized: "Guild {} initialized"
-commands: "Available commands: `{}`"
+commands: "```md\n{}```"
 noplugin: "Please give a valid plugin"
 invalidplugin: "The plugin `{}` does not exist"
 commandinfo: "```md\n{}{}\n{}\nPermission Level: {}```"

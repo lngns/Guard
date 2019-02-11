@@ -6,7 +6,13 @@ module.exports = {
     {
         let commandList = [];
         let commands = args.plugins.plugins;
-        for(let cmd in commands) commandList.push(commands[cmd].name);
-        args.message.channel.send(args.translator.translate("commands", [commandList.join(", ")]));
+        for(let cmd in commands)
+        {
+            if(commands[cmd].permission <= args.permssion)
+            {
+                commandList.push(`${commands[cmd].name} - ${commands[cmd].description}`);
+            }
+        }
+        args.message.channel.send(args.translator.translate("commands", [commandList.join("\n")]));
     }
 };
