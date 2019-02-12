@@ -7,9 +7,14 @@ module.exports = {
     script: function(args)
     {
         let output = Sys.execSync("git pull");
-        args.message.channel.send(args.translator.translate("pullcomplete", [output]));
-        setTimeout(() => {
-            process.exit(0);
-        }, 1500);
+        if(args.tokens.indexOf("-r") > -1)
+        {
+            args.message.channel.send(args.translator.translate("pullcompleterestart", [output]));
+            setTimeout(() => {
+                process.exit(0);
+            }, 1500);
+        } else {
+            args.message.channel.send(args.translator.translate("pullcomplete", [output]));
+        }
     }
 };
