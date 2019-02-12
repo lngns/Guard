@@ -7,9 +7,14 @@ module.exports = {
     script: function(args)
     {
         let output = Sys.execSync("git pull");
-        args.message.channel.send(args.translator.translate("pullcomplete", [output]));
-        setTimeout(() => {
-            process.exit(0);
-        }, 1500);
+        if(output != "Already up to date.")
+        {
+            args.message.channel.send(args.translator.translate("pullcomplete", [output]));
+            setTimeout(() => {
+                process.exit(0);
+            }, 1500);
+        } else {
+            args.message.channel.send(args.translator.translate("pullfailed", []));
+        }
     }
 };
