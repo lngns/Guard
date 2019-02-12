@@ -3,7 +3,7 @@ const Sys = require("child_process");
 module.exports = {
     permission: 3,
     description: "Pulls the most recent update and restarts",
-    usage: "pull",
+    usage: "pull [-r]",
     script: function(args)
     {
         let output = Sys.execSync("git pull");
