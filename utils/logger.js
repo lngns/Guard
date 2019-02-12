@@ -25,7 +25,7 @@ class Logger
                 break;
             case 1:
                 if(this.config.sentry.enabled) Sentry.captureMessage(message, Sentry.Severity.Error);
-                console.log(time + Chalk.red(" error -> ") + message);
+                console.log(time + Chalk.red(" erro -> ") + message);
                 break;
             case 2:
                 if(this.config.sentry.enabled) Sentry.captureMessage(message, Sentry.Severity.Warning);
@@ -33,7 +33,7 @@ class Logger
                 break;
             case 3:
                 if(this.config.sentry.enabled) Sentry.captureMessage(message, Sentry.Severity.Debug);
-                console.log(time + Chalk.blue(" debug -> ") + message);
+                console.log(time + Chalk.blue(" debg -> ") + message);
                 break;
         }
     }
