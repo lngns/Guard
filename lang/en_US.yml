@@ -19,3 +19,4 @@ pullcompleterestart: "Successfully pulled updates from GitHub, restarting ```{}`
 pullcomplete: "Successfully pulled updates from GitHub ```{}```"
 massreloadsuccess: "Successfully reloaded all plugins"
 massreloadfail: "Failed to reload all plugins {}"
+availablelocales: "Currently Available Locales: `{}`"

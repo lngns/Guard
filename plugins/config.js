@@ -9,6 +9,9 @@ module.exports = {
         let guild = await args.database.collection("Guilds").findOne({ id: args.message.guild.id });
         switch(args.tokens[1])
         {
+            case "locale":
+                if(!args.tokens[2]) args.message.channel.send("availablelocales", [args.translator.available]);
+                break;
             case "modrole":
                 args.tokens.splice(0, 2);
                 var role = args.message.guild.roles.find(r => r.name == args.tokens.join(" "));

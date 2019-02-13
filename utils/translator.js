@@ -5,7 +5,7 @@ class Translator
 {
     constructor(config = {})
     {
-        this.available = Sys.readdirSync("../lang", {withFileTypes: false});
+        this.available = Sys.readdirSync("../lang", {withFileTypes: false}).join(", ");
         this.locale = Yaml.readSync("../lang/" + config.bot.locale + ".yml");      
     }
     translate(phrase = "", params = [])
