@@ -60,7 +60,8 @@ Client.on("guildCreate", async (g) => {
         Database.collection("Guilds").insertOne({
             id: g.id, owner: g.ownerID, modrole: null, muterole: null, logchannel: null,
             antiraid: {enabled: false, type: 0}, antispam: {enabled: false, time: 0, count: 0},
-            antihoist: {enabled: false, list:[]}, filters: {enabled: false, list: []}
+            antihoist: {enabled: false, list:[]}, filters: {enabled: false, list: []},
+            autorole: null, locale: "en_US", tags: [], selfroles: []
         });
     }
 });
