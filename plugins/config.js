@@ -11,6 +11,7 @@ module.exports = {
         {
             case "locale":
                 if(!args.tokens[2]) args.message.channel.send(args.translator.translate("availablelocales", [args.translator.available]));
+                else updates.locale = args.tokens[2];
                 break;
             case "modrole":
                 args.tokens.splice(0, 2);
