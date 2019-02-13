@@ -19,6 +19,12 @@ module.exports = {
                 if(role) updates.modrole = role.id;
                 else failed = true;
                 break;
+            case "autorole":
+                args.tokens.splice(0, 2);
+                var role = args.message.guild.roles.find(r => r.name == args.tokens.join(" "));
+                if(role) updates.autorole = role.id;
+                else failed = true;
+                break;
             case "muterole":
                 args.tokens.splice(0, 2);
                 var role = args.message.guild.roles.find(r => r.name == args.tokens.join(" "));
