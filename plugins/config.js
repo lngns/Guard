@@ -46,9 +46,12 @@ module.exports = {
                 }
                 break;
         }
-        if(!failed) { 
-            args.message.channel.send(args.translator.translate("configupdated", [])); 
-            args.database.collection("Guilds").findOneAndUpdate({ id: args.message.guild.id }, { "$set": updates });
-        } else args.message.channel.send(args.translator.translate("configfailed", []));
+        if(updates != {})
+        {
+            if(!failed) { 
+                args.message.channel.send(args.translator.translate("configupdated", [])); 
+                args.database.collection("Guilds").findOneAndUpdate({ id: args.message.guild.id }, { "$set": updates });
+            } else args.message.channel.send(args.translator.translate("configfailed", []));
+        }
     }
 };
