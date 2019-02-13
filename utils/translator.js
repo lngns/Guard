@@ -18,8 +18,10 @@ class Translator
           for (let p in params) {
             english = english.replace('{}', params[p])
           }
-          return english
+
+          return english;
         }
+        
         return translated;
     }
 }
