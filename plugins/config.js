@@ -10,7 +10,7 @@ module.exports = {
         switch(args.tokens[1])
         {
             case "locale":
-                if(!args.tokens[2]) args.message.channel.send("availablelocales", [args.translator.available]);
+                if(!args.tokens[2]) args.message.channel.send(args.translator.translate("availablelocales", [args.translator.available]));
                 break;
             case "modrole":
                 args.tokens.splice(0, 2);
@@ -46,7 +46,7 @@ module.exports = {
                 }
                 break;
         }
-        if(updates != {})
+        if(Object.keys(updates).length > 0)
         {
             if(!failed) { 
                 args.message.channel.send(args.translator.translate("configupdated", [])); 
