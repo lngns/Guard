@@ -1,6 +1,6 @@
 module.exports = {
     permission: 0,
-    description: "Gives information on a command",
+    description: "Gives information on a command or lists available ones",
     usage: "help <command>",
     script: function(args)
     {
