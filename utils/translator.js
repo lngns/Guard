@@ -14,15 +14,19 @@ class Translator
             translated = translated.replace("{}", params[p]);
         }
         if (!translated) {
-          let english = Yaml.readSync("../lang/en_US.yml")[phrase]
-          for (let p in params) {
-            english = english.replace('{}', params[p])
-          }
+            let english = Yaml.readSync("../lang/en_US.yml")[phrase]
+            for (let p in params) {
+                english = english.replace('{}', params[p])
+            }
 
           return english;
         }
-        
+
         return translated;
+    }
+    change(locale = "")
+    {
+        this.locale = Yaml.readSync("../lang/" + locale + ".yml"); 
     }
 }
 
