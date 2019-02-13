@@ -1,10 +1,12 @@
 const Yaml = require("node-yaml");
+const Sys = require("fs");
 
 class Translator
 {
     constructor(config = {})
     {
-        this.locale = Yaml.readSync("../lang/" + config.bot.locale + ".yml");        
+        this.available = Sys.readdirSync("../lang", {withFileTypes: false});
+        this.locale = Yaml.readSync("../lang/" + config.bot.locale + ".yml");      
     }
     translate(phrase = "", params = [])
     {
