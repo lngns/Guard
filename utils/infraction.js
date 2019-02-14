@@ -28,10 +28,10 @@ class Infraction
 
         return null;
     }
-    async search(user = "", guild = "", index = 0)
+    async search(user = "", guild = "", page = 1)
     {
-        let page = (index + 1) * 5;
-        let infractions = await this.database.collection("Infractions").find({ userid: user, guildid: guild }, { limit: 5, skip: page });
+        let index = (page - 1) * 5;
+        let infractions = await this.database.collection("Infractions").find({ userid: user, guildid: guild }, { limit: 5, skip: index });
         
         return infractions;
     }
