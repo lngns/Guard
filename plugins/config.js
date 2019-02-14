@@ -5,7 +5,6 @@ module.exports = {
     script: async function(args)
     {
         let updates = {};
-        let failed = false;
         let guild = await args.database.collection("Guilds").findOne({ id: args.message.guild.id });
         switch(args.tokens[1])
         {
@@ -15,26 +14,18 @@ module.exports = {
                 break;
             case "modrole":
                 args.tokens.splice(0, 2);
-                var role = args.message.guild.roles.find(r => r.name == args.tokens.join(" "));
-                if(role) updates.modrole = role.id;
-                else failed = true;
+                updates.modrole = args.message.guild.roles.find(r => r.name == args.tokens.join(" "));
                 break;
             case "autorole":
                 args.tokens.splice(0, 2);
-                var role = args.message.guild.roles.find(r => r.name == args.tokens.join(" "));
-                if(role) updates.autorole = role.id;
-                else failed = true;
+                updates.autorole = args.message.guild.roles.find(r => r.name == args.tokens.join(" "));
                 break;
             case "muterole":
                 args.tokens.splice(0, 2);
-                var role = args.message.guild.roles.find(r => r.name == args.tokens.join(" "));
-                if(role) updates.muterole = role.id;
-                else failed = true;
+                updates.muterole = args.message.guild.roles.find(r => r.name == args.tokens.join(" "));
                 break;
             case "logchannel":
-                var channel = args.message.guild.channels.find(c => c.name == args.tokens[2]);
-                if(channel) updates.logchannel = channel.id;
-                else failed = true;
+                updates.logchannel = args.message.guild.channels.find(c => c.name == args.tokens[2]);
                 break;
             case "antiraid":
                 switch(args.tokens[2])
@@ -55,10 +46,8 @@ module.exports = {
         }
         if(Object.keys(updates).length > 0)
         {
-            if(!failed) { 
-                args.message.channel.send(args.translator.translate("configupdated", [])); 
-                args.database.collection("Guilds").findOneAndUpdate({ id: args.message.guild.id }, { "$set": updates });
-            } else args.message.channel.send(args.translator.translate("configfailed", []));
+            args.message.channel.send(args.translator.translate("configupdated", [])); 
+            args.database.collection("Guilds").findOneAndUpdate({ id: args.message.guild.id }, { "$set": updates });
         }
     }
 };

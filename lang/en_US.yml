@@ -14,7 +14,6 @@ guildreset: "Doing this will reset the guild's config, type `confirm` to continu
 guildinit: "The guild config is now initialized"
 guildcancel: "The guild config setup was canceled"
 configupdated: "The guild config was updated"
-configfailed: "The guild config was not updated"
 pullcompleterestart: "Successfully pulled updates from GitHub, restarting ```git\n{}```"
 pullcomplete: "Successfully pulled updates from GitHub ```git\n{}```"
 massreloadsuccess: "Successfully reloaded all plugins"
