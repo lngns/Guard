@@ -46,7 +46,8 @@ module.exports = {
         }
         if(Object.keys(updates).length > 0)
         {
-            args.message.channel.send(args.translator.translate("configupdated", [])); 
+            let key = Object.keys(updates)[0];
+            args.message.channel.send(args.translator.translate("configupdated", [key])); 
             args.database.collection("Guilds").findOneAndUpdate({ id: args.message.guild.id }, { "$set": updates });
         }
     }
