@@ -75,6 +75,24 @@ module.exports = {
                         break;
                 }
                 break;
+            case "antihoist":
+                let chars = guild.antihoist.list;
+                updates.antihoist = {};
+                switch(args.tokens[2])
+                {
+                    case "toggle":
+                        updates.antihoist.enabled = !guild.antihoist.enabled;
+                        break;
+                    case "add":
+                        chars.push(args.tokens[3]);
+                        updates.antihoist.list = chars;
+                        break;
+                    case "remove":
+                        chars.splice(chars.indexOf(args.tokens[3]), 1);
+                        updates.antihoist.list = chars;
+                        break;
+                }
+                break;
         }
         if(Object.keys(updates).length > 0)
         {
