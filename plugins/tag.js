@@ -17,10 +17,12 @@ module.exports = {
                 }
                 tags[args.tokens[2]] = tagContent;
                 args.database.collection("Guilds").findOneAndUpdate({ id: args.message.guild.id }, { "$set": { tags: tags } }, { upsert: false });
+                args.message.channel.send(args.translator.translate("tagadded", [args.tokens[2]]));
                 break;
             case "remove":
                 delete tags[args.tokens[2]];
                 args.database.collection("Guilds").findOneAndUpdate({ id: args.message.guild.id }, { "$set": { tags: tags } }, { upsert: false });
+                args.message.channel.send(args.translator.translate("tagremoved", [args.tokens[2]]));
                 break;
             case "use":
                 args.message.channel.send(tags[args.tokens[2]]);
