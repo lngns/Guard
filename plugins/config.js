@@ -56,6 +56,25 @@ module.exports = {
                         break;
                 }
                 break;
+            case "selfroles":
+                let role = null;
+                let selfroles = guild.selfroles;
+                switch(args.tokens[2])
+                {
+                    case "add":
+                        args.tokens.splice(0, 3);
+                        role = args.message.guild.roles.find(r => r.name == args.tokens.join(" "));
+                        selfroles.push(role.id);
+                        updates.selfroles = selfroles;
+                        break;
+                    case "remove":
+                        args.tokens.splice(0, 3);
+                        role = args.message.guild.roles.find(r => r.name == args.tokens.join(" "));
+                        selfroles.splice(selfroles.indexOf(role.id), 1);
+                        updates.selfroles = selfroles;
+                        break;
+                }
+                break;
         }
         if(Object.keys(updates).length > 0)
         {
