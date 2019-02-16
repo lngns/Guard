@@ -1,7 +1,7 @@
 module.exports = {
     permission: 2,
     description: "Allows admins to change guild options",
-    usage: "config <key> <subkey> [value]",
+    usage: "config <key> <value/subkey> [value]",
     script: async function(args)
     {
         let updates = {};
