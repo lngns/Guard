@@ -28,7 +28,7 @@ module.exports = {
                 updates.logchannel = args.message.guild.channels.find(c => c.name == args.tokens[2]);
                 break;
             case "antiraid":
-            updates.antiraid = {};
+                updates.antiraid = {};
                 switch(args.tokens[2])
                 {
                     case "toggle":
@@ -42,7 +42,7 @@ module.exports = {
                 }
                 break;
             case "antispam":
-            updates.antispam = {};
+                updates.antispam = {};
                 switch(args.tokens[2])
                 {
                     case "toggle":
