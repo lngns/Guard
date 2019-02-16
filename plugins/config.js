@@ -14,18 +14,18 @@ module.exports = {
                 break;
             case "modrole":
                 args.tokens.splice(0, 2);
-                updates.modrole = args.message.guild.roles.find(r => r.name == args.tokens.join(" "));
+                updates.modrole = args.message.guild.roles.find(r => r.name == args.tokens.join(" ")).id;
                 break;
             case "autorole":
                 args.tokens.splice(0, 2);
-                updates.autorole = args.message.guild.roles.find(r => r.name == args.tokens.join(" "));
+                updates.autorole = args.message.guild.roles.find(r => r.name == args.tokens.join(" ")).id;
                 break;
             case "muterole":
                 args.tokens.splice(0, 2);
-                updates.muterole = args.message.guild.roles.find(r => r.name == args.tokens.join(" "));
+                updates.muterole = args.message.guild.roles.find(r => r.name == args.tokens.join(" ")).id;
                 break;
             case "logchannel":
-                updates.logchannel = args.message.guild.channels.find(c => c.name == args.tokens[2]);
+                updates.logchannel = args.message.guild.channels.find(c => c.name == args.tokens[2]).id;
                 break;
             case "antiraid":
                 updates.antiraid = { enabled: guild.antiraid.enabled, type: guild.antiraid.type };
