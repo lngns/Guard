@@ -4,7 +4,9 @@ module.exports = {
     usage: "tag <add/remove/use> <tag>",
     script: async function(args)
     {
-        let tags = await args.database.collection("Guilds").findOne({ id: args.message.guild.id }).tags;
+        let guild = await args.database.collection("Guilds").findOne({ id: args.message.guild.id });
+        let tags = guild.tags;
+        
         switch(args.tokens[1])
         {
             case "add":
