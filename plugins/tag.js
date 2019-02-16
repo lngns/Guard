@@ -16,13 +16,11 @@ module.exports = {
                     tagContent += args.tokens[i] + " ";
                 }
                 tags[args.tokens[2]] = tagContent;
-                args.logger.log(args.logger.DEBUG, JSON.stringify(tags));
-                // DEBUG - args.database.collection("Guilds").findOneAndUpdate({ id: args.message.guild.update }, { "$set": { tags: tags } }, { upsert: false });
+                args.database.collection("Guilds").findOneAndUpdate({ id: args.message.guild.id }, { "$set": { tags: tags } }, { upsert: false });
                 break;
             case "remove":
                 delete tags[args.tokens[2]];
-                args.logger.log(args.logger.DEBUG, JSON.stringify(tags));
-                // DEBUG - args.database.collection("Guilds").findOneAndUpdate({ id: args.message.guild.update }, { "$set": { tags: tags } }, { upsert: false });
+                args.database.collection("Guilds").findOneAndUpdate({ id: args.message.guild.id }, { "$set": { tags: tags } }, { upsert: false });
                 break;
             case "use":
                 args.message.channel.send(tags[args.tokens[2]]);
