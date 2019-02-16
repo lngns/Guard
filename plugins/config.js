@@ -28,7 +28,7 @@ module.exports = {
                 updates.logchannel = args.message.guild.channels.find(c => c.name == args.tokens[2]);
                 break;
             case "antiraid":
-                updates.antiraid = {};
+                updates.antiraid = { enabled: guild.antiraid.enabled, type: guild.antiraid.type };
                 switch(args.tokens[2])
                 {
                     case "toggle":
@@ -42,7 +42,7 @@ module.exports = {
                 }
                 break;
             case "antispam":
-                updates.antispam = {};
+                updates.antispam = { enabled: guild.antispam.enabled, time: guild.antispam.time, count: guild.antispam.count };
                 switch(args.tokens[2])
                 {
                     case "toggle":
@@ -77,7 +77,7 @@ module.exports = {
                 break;
             case "antihoist":
                 let chars = guild.antihoist.list;
-                updates.antihoist = {};
+                updates.antihoist = { enabled: guild.antihoist.enabled, list: guild.antihoist.list };
                 switch(args.tokens[2])
                 {
                     case "toggle":
