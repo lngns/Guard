@@ -28,18 +28,31 @@ module.exports = {
                 updates.logchannel = args.message.guild.channels.find(c => c.name == args.tokens[2]);
                 break;
             case "antiraid":
+            updates.antiraid = {};
                 switch(args.tokens[2])
                 {
                     case "toggle":
-                        var value = !guild.antiraid.enabled;
-                        updates.antiraid = {};
-                        updates.antiraid.enabled = value;
+                        updates.antiraid.enabled = !guild.antiraid.enabled;
                         break;
                     case "type":
-                        updates.antiraid = {};
                         if(args.tokens[3] == "kick") updates.antiraid.type = 0;
                         if(args.tokens[3] == "ban") updates.antiraid.type = 1;
                         if(args.tokens[3] == "mute") updates.antiraid.type = 2;
+                        break;
+                }
+                break;
+            case "antispam":
+            updates.antispam = {};
+                switch(args.tokens[2])
+                {
+                    case "toggle":
+                        updates.antispam.enabled = !guild.antispam.enabled;
+                        break;
+                    case "time":
+                        updates.antispam.time = parseInt(args.tokens[3], 10);
+                        break;
+                    case "count":
+                        updates.antispam.count = parseInt(args.tokens[3], 10);
                         break;
                 }
                 break;
