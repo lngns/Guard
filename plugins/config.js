@@ -93,6 +93,24 @@ module.exports = {
                         break;
                 }
                 break;
+            case "filters":
+                let filters = guild.filters.list;
+                updates.filters = { enabled: guild.filters.enabled, list: guild.filters.list };
+                switch(args.tokens[2])
+                {
+                    case "toggle":
+                        updates.filters.enabled = !guild.filters.enabled;
+                        break;
+                    case "add":
+                        filters.push(args.tokens[3]);
+                        updates.filters.list = filters;
+                        break;
+                    case "remove":
+                        filters.splice(filters.indexOf(args.tokens[3]), 1);
+                        updates.filters.list = filters;
+                        break;
+                }
+                break;
         }
         if(Object.keys(updates).length > 0)
         {
