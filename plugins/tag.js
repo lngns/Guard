@@ -1,7 +1,7 @@
 module.exports = {
     permission: 1,
     description: "Allows users to save 'tags' or text commands",
-    usage: "tag <add/remove/use> <tag>",
+    usage: "tag <add/remove/use> <tag> [content]",
     script: async function(args)
     {
         let guild = await args.database.collection("Guilds").findOne({ id: args.message.guild.id });
