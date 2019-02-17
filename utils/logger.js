@@ -3,9 +3,10 @@ const Sentry = require("@sentry/node");
 
 class Logger
 {
-    constructor(config = {})
+    constructor(config = {}, client = {})
     {
         this.config = config;
+        this.client = client;
         this.INFO = 0;
         this.ERROR = 1;
         this.WARNING = 2;
@@ -36,6 +37,11 @@ class Logger
                 console.log(time + Chalk.blue(" debg -> ") + message);
                 break;
         }
+    }
+    push(guild, channel, message)
+    {
+        let Time = "[`" + new Date().toLocaleTimeString("it-IT") + "`] ";
+        this.client.guilds.get(guild.id).channels.get(channel).send(Time + message);
     }
 }
 
