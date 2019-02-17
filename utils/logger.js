@@ -38,10 +38,10 @@ class Logger
                 break;
         }
     }
-    push(guild, channel, message)
+    push(guild, message)
     {
         let Time = "[`" + new Date().toLocaleTimeString("it-IT") + "`] ";
-        this.client.guilds.get(guild.id).channels.get(channel).send(Time + message);
+        this.client.guilds.get(guild.id).channels.get(guild.logchannel).send(Time + message);
     }
 }
 
