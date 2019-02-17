@@ -1,5 +1,6 @@
 const Chalk = require("chalk");
 const Sentry = require("@sentry/node");
+const moment = require("moment");
 
 class Logger
 {
@@ -40,8 +41,7 @@ class Logger
     }
     push(guild, message)
     {
-        let date = new Date();
-        let Time = "[`" + date.getHours() + ":" + date.getMinutes() + "`] ";
+        let Time = "[`" + moment().format("HH:MM:SS") + "`] ";
         this.client.guilds.get(guild.id).channels.get(guild.logchannel).send(Time + message);
     }
 }
