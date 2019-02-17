@@ -118,7 +118,7 @@ module.exports = {
                 delete guild._id;
                 let config = Yaml.dump(guild);
                 Sys.writeFileSync(`config_${args.message.guild.id}.yml`, config);
-                args.message.channel.send({ files: [
+                args.message.channel.send(args.translator.translate("guildconfig", [args.message.guild.name]), { files: [
                     {
                         attachment: `config_${args.message.guild.id}.yml`,
                         name: "config.yml"
