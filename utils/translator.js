@@ -11,12 +11,12 @@ class Translator
     translate(phrase = "", params = [])
     {
         let translated = this.locale[phrase];
-        if (translated !== null) {
+        try {
             for(let p in params)
             {
                 translated = translated.replace("{}", params[p]);
             }
-        } else {
+        } catch(err) {
             let english = Yaml.readSync("../lang/en_US.yml")[phrase];
             for(let p in params) {
                 english = english.replace('{}', params[p]);
