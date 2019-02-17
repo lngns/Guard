@@ -10,6 +10,7 @@ module.exports = {
         let guild = await args.database.collection("Guilds").findOne({ id: args.message.guild.id });
         if(!args.tokens[1])
         {
+            delete guild._id;
             let config = Yaml.dump(guild);
             args.message.channel.send(args.translator.translate("guildconfig", [config]));
         } else {
