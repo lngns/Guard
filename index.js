@@ -50,10 +50,6 @@ Client.on("message", async (msg) => {
             plugins: Plugins, database: Database, translator: Translator,
             infractions: Infractions, permission: permission
         }, permission);
-        if(Plugins.plugins.indexOf(tokens[2]) > -1 && guild.logchannel)
-        {
-            Logger.push(guild, `Command \`${tokens[0]}\` ran by ${msg.author.tag} (\`${msg.author.id}\`)`);
-        }
     }
 });
 
