@@ -26,7 +26,8 @@ module.exports = {
                 args.message.channel.send(args.translator.translate("tagremoved", [args.tokens[2]]));
                 break;
             default:
-                args.message.channel.send(tags[args.tokens[1]]);
+                if(tags[args.tokens[1]]) args.message.channel.send(tags[args.tokens[1]]);
+                else args.message.channel.send(args.translator.translate("invalidtag", [args.tokens[1]]));
                 break;
         }
     }
