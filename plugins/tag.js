@@ -1,7 +1,7 @@
 module.exports = {
     permission: 1,
     description: "Allows users to save 'tags' or text commands",
-    usage: "tag <add/remove/use> <tag> [content]",
+    usage: "tag <add/remove/tag> <tag> [content]",
     script: async function(args)
     {
         let guild = await args.database.collection("Guilds").findOne({ id: args.message.guild.id });
@@ -15,6 +15,7 @@ module.exports = {
                 {
                     tagContent += args.tokens[i] + " ";
                 }
+                tagContent = tagContent.trimRight();
                 tags[args.tokens[2]] = tagContent;
                 args.database.collection("Guilds").findOneAndUpdate({ id: args.message.guild.id }, { "$set": { tags: tags } }, { upsert: false });
                 args.message.channel.send(args.translator.translate("tagadded", [args.tokens[2]]));
@@ -24,8 +25,8 @@ module.exports = {
                 args.database.collection("Guilds").findOneAndUpdate({ id: args.message.guild.id }, { "$set": { tags: tags } }, { upsert: false });
                 args.message.channel.send(args.translator.translate("tagremoved", [args.tokens[2]]));
                 break;
-            case "use":
-                args.message.channel.send(tags[args.tokens[2]]);
+            default:
+                args.message.channel.send(tags[args.tokens[1]]);
                 break;
         }
     }
