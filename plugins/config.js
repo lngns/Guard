@@ -117,7 +117,11 @@ module.exports = {
             let key = Object.keys(updates)[0];
             args.message.channel.send(args.translator.translate("configupdated", [key])); 
             args.database.collection("Guilds").findOneAndUpdate({ id: args.message.guild.id }, { "$set": updates });
-            args.logger.push(guild, `Config option \`${key}\` updated by ${args.message.author.tag} (\`${args.message.author.id}\`)`);
+            args.logger.push(guild, args.translator.translate("gconfigupdated", [
+                key, 
+                args.message.author.tag, 
+                args.message.author.id
+            ]));
         }
     }
 };
