@@ -9,8 +9,8 @@ const Yaml = require("node-yaml");
 
 const Config = Yaml.readSync("config.yml");
 const Translator = new TranslationUtil(Config);
-const Logger = new LoggerUtil(Config);
-const Client = new Discord.Client();
+const Client = new Discord.Client({ sync: true });
+const Logger = new LoggerUtil(Config, Client);
 const Plugins = new PluginUtil();
 let Infractions = null;
 let Database = null;
