@@ -43,7 +43,7 @@ Client.on("message", async (msg) => {
         if(guild && guild.modrole && msg.member.roles.some(g => g.id == guild.modrole)) permission = 1;
         if(msg.member.hasPermission("ADMINISTRATOR") == true) permission = 2;
         if(Config.developers.indexOf(msg.author.id) > -1) permission = 3;
-        Translator.change(guild.locale);
+        if(guild) Translator.change(guild.locale);
         Plugins.run(tokens[0], {
             message: msg, config: Config, discord: Discord,
             client: Client, tokens: tokens, logger: Logger,
