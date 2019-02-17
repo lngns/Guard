@@ -42,7 +42,7 @@ class Logger
     push(guild, message)
     {
         let Time = "[`" + moment().format("HH:MM:SS") + "`] ";
-        this.client.guilds.get(guild.id).channels.get(guild.logchannel).send(Time + message);
+        if(guild.logchannel) this.client.guilds.get(guild.id).channels.get(guild.logchannel).send(Time + message);
     }
 }
 
