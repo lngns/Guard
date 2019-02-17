@@ -116,6 +116,8 @@ module.exports = {
                 break;
             case "export":
                 delete guild._id;
+                delete guild.owner;
+                delete guild.id;
                 let config = Yaml.dump(guild);
                 Sys.writeFileSync(`config_${args.message.guild.id}.yml`, config);
                 args.message.channel.send(args.translator.translate("guildconfig", [args.message.guild.name]), { files: [
