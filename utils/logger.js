@@ -40,7 +40,8 @@ class Logger
     }
     push(guild, message)
     {
-        let Time = "[`" + new Date().toLocaleTimeString("it-IT") + "`] ";
+        let date = new Date();
+        let Time = "[`" + date.getHours() + ":" + date.getMinutes() + "`] ";
         this.client.guilds.get(guild.id).channels.get(guild.logchannel).send(Time + message);
     }
 }
