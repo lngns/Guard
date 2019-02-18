@@ -115,6 +115,10 @@ module.exports = {
                 }
                 break;
             case "export":
+                args.logger.push(guild, args.translator.translate("gconfigexported", [
+                    args.message.author.tag,
+                    args.message.author.id
+                ]));
                 delete guild._id;
                 delete guild.owner;
                 delete guild.id;
@@ -127,10 +131,6 @@ module.exports = {
                     }
                 ]}).then(() => {
                     Sys.unlinkSync(`config_${args.message.guild.id}.yml`);
-                    args.logger.push(guild, args.translator.translate("gconfigexported", [
-                        args.message.author.tag,
-                        args.message.author.id
-                    ]));
                 });
                 break;
         }
