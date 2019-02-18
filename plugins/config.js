@@ -127,6 +127,10 @@ module.exports = {
                     }
                 ]}).then(() => {
                     Sys.unlinkSync(`config_${args.message.guild.id}.yml`);
+                    args.logger.push(guild, args.translator.translate("gconfigexported", [
+                        args.message.author.tag,
+                        args.message.author.id
+                    ]));
                 });
                 break;
         }
