@@ -1,4 +1,6 @@
 const Yaml = require("node-yaml");
+const StringUtil = require("./string");
+const String = new StringUtil();
 const Sys = require("fs");
 
 class Translator
@@ -14,12 +16,12 @@ class Translator
         try {
             for(let p in params)
             {
-                translated = translated.replace("{}", params[p]);
+                translated = translated.replace("{}", String.strip(params[p]));
             }
         } catch(err) {
             let english = Yaml.readSync("../lang/en_US.yml")[phrase];
             for(let p in params) {
-                english = english.replace('{}', params[p]);
+                english = english.replace("{}", String.strip(params[p]));
             }
 
             return english;
