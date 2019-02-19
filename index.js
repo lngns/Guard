@@ -67,6 +67,19 @@ Client.on("guildCreate", async (g) => {
     }
 });
 
+Client.on("messageDelete", async (msg) => {
+    if(msg != null)
+    {
+        let guild = await Database.collection("Guilds").findOne({ id: msg.guild.id });
+        if(guild) Translator.change(guild.locale);
+        if(guild && guild.logchannel != null) msg.guild.channels.get(guild.logchannel).send(Translator.translate("gmessagedeleted", [
+            msg.content,
+            msg.author.tag,
+            msg.author.id
+        ]));
+    }
+});
+
 MongoDB.connect(Config.database.cluster, {useNewUrlParser: true}).then(dbClient => {
     Database = dbClient.db(Config.database.name);
     Logger.log(Logger.INFO, Translator.translate("connected", ["MongoDB"]));
