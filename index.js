@@ -72,7 +72,7 @@ Client.on("messageDelete", async (msg) => {
     {
         let guild = await Database.collection("Guilds").findOne({ id: msg.guild.id });
         if(guild) Translator.change(guild.locale);
-        if(guild && guild.logchannel != null) msg.guild.channels.get(guild.logchannel).send(Translator.translate("gmessagedeleted", [
+        if(guild && guild.logchannel != null) Logger.push(guild, Translator.translate("gmessagedeleted", [
             msg.content,
             msg.author.tag,
             msg.author.id
