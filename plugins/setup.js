@@ -33,7 +33,7 @@ module.exports = {
                                 antihoist: {enabled: false, list:[]}, filters: {enabled: false, list: []},
                                 autorole: null, locale: "en_US", tags: {}, selfroles: []
                             }});
-                            args.message.channel.send(args.translator.translate("guildreset", []));
+                            args.message.channel.send(args.translator.translate("guildresetmsg", []));
                             args.logger.push(guild, args.translator.translate("gguildreset", [
                                 args.message.author.tag,
                                 args.message.author.id
