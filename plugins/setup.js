@@ -15,6 +15,10 @@ module.exports = {
                 autorole: null, locale: "en_US", tags: {}, selfroles: []
             });
             args.message.channel.send(args.translator.translate("guildinit", []));
+            args.logger.push(guild, args.translator.translate("gguildinit", [
+                args.message.author.tag,
+                args.message.author.id
+            ]));
         } else {
             args.message.channel.send(args.translator.translate("guildreset", [])).then(msg => {
                 let filter = ms => ms.author.id == args.message.author.id;
@@ -29,7 +33,11 @@ module.exports = {
                                 antihoist: {enabled: false, list:[]}, filters: {enabled: false, list: []},
                                 autorole: null, locale: "en_US", tags: {}, selfroles: []
                             }});
-                            args.message.channel.send(args.translator.translate("guildinit", []));
+                            args.message.channel.send(args.translator.translate("guildreset", []));
+                            args.logger.push(guild, args.translator.translate("gguildreset", [
+                                args.message.author.tag,
+                                args.message.author.id
+                            ]));
                         } else {
                             args.message.channel.send(args.translator.translate("guildcancel", []));
                         }
