@@ -16,12 +16,12 @@ class Translator
         try {
             for(let p in params)
             {
-                translated = translated.replace("{}", String.strip(params[p]));
+                translated = translated.replace("{}", params[p] ? String.strip(params[p]) : params[p]);
             }
         } catch(err) {
             let english = Yaml.readSync("../lang/en_US.yml")[phrase];
             for(let p in params) {
-                english = english.replace("{}", String.strip(params[p]));
+                english = english.replace("{}", params[p] ? String.strip(params[p]) : params[p]);
             }
 
             return english;
