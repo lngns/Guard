@@ -8,7 +8,7 @@ const StringUtil = require("./utils/string");
 const CachetApi = require("cachet-api");
 const Yaml = require("node-yaml");
 
-const Str = new StringUtil();
+const String = new StringUtil();
 const Config = Yaml.readSync("config.yml");
 const Translator = new TranslationUtil(Config);
 const Client = new Discord.Client({ sync: true });
@@ -50,7 +50,7 @@ Client.on("message", async (msg) => {
             message: msg, config: Config, discord: Discord,
             client: Client, tokens: tokens, logger: Logger,
             plugins: Plugins, database: Database, translator: Translator,
-            infractions: Infractions, permission: permission, str: Str
+            infractions: Infractions, permission: permission, str: String
         }, permission);
     }
 });
@@ -75,7 +75,7 @@ Client.on("messageDelete", async (msg) => {
         let guild = await Database.collection("Guilds").findOne({ id: msg.guild.id });
         if(guild) Translator.change(guild.locale);
         if(guild && guild.logchannel != null) Logger.push(guild, Translator.translate("gmessagedeleted", [
-            msg.content,
+            String.strip(msg.content),
             msg.author.tag,
             msg.author.id
         ]));
