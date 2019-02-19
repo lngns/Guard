@@ -2,7 +2,7 @@ class StringUtil
 {
     strip(message = "")
     {
-        return message.replace(/`|\|/ug, "");
+        return message.replace(/`|\||\n/ug, "");
     }
 }
 
