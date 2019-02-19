@@ -4,9 +4,11 @@ const LoggerUtil = require("./utils/logger");
 const PluginUtil = require("./utils/plugin");
 const TranslationUtil = require("./utils/translator");
 const InfractionUtil = require("./utils/infraction");
+const StringUtil = require("./utils/string");
 const CachetApi = require("cachet-api");
 const Yaml = require("node-yaml");
 
+const Str = new StringUtil();
 const Config = Yaml.readSync("config.yml");
 const Translator = new TranslationUtil(Config);
 const Client = new Discord.Client({ sync: true });
@@ -48,7 +50,7 @@ Client.on("message", async (msg) => {
             message: msg, config: Config, discord: Discord,
             client: Client, tokens: tokens, logger: Logger,
             plugins: Plugins, database: Database, translator: Translator,
-            infractions: Infractions, permission: permission
+            infractions: Infractions, permission: permission, str: Str
         }, permission);
     }
 });
