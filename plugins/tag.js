@@ -20,8 +20,8 @@ module.exports = {
                 args.database.collection("Guilds").findOneAndUpdate({ id: args.message.guild.id }, { "$set": { tags: tags } }, { upsert: false });
                 args.message.channel.send(args.translator.translate("tagadded", [args.tokens[2]]));
                 args.logger.push(guild, args.translator.translate("gtagadded", [
-                    args.tokens[2], 
-                    args.message.author.tag, 
+                    args.string.escape(args.tokens[2]), 
+                    args.string.escape(args.message.author.tag), 
                     args.message.author.id
                 ]));
                 break;
@@ -30,8 +30,8 @@ module.exports = {
                 args.database.collection("Guilds").findOneAndUpdate({ id: args.message.guild.id }, { "$set": { tags: tags } }, { upsert: false });
                 args.message.channel.send(args.translator.translate("tagremoved", [args.tokens[2]]));
                 args.logger.push(guild, args.translator.translate("gtagremoved", [
-                    args.tokens[2], 
-                    args.message.author.tag, 
+                    args.string.escape(args.tokens[2]), 
+                    args.string.escape(args.message.author.tag), 
                     args.message.author.id
                 ]));
                 break;

@@ -50,7 +50,7 @@ Client.on("message", async (msg) => {
             message: msg, config: Config, discord: Discord,
             client: Client, tokens: tokens, logger: Logger,
             plugins: Plugins, database: Database, translator: Translator,
-            infractions: Infractions, permission: permission, str: String
+            infractions: Infractions, permission: permission, string: String
         }, permission);
     }
 });
@@ -75,8 +75,8 @@ Client.on("messageDelete", async (msg) => {
         let guild = await Database.collection("Guilds").findOne({ id: msg.guild.id });
         if(guild) Translator.change(guild.locale);
         if(guild && guild.logchannel != null) Logger.push(guild, Translator.translate("gmessagedeleted", [
-            String.strip(msg.content),
-            msg.author.tag,
+            String.escape(msg.content),
+            String.escape(msg.author.tag),
             msg.author.id
         ]));
     }

@@ -16,7 +16,7 @@ module.exports = {
             });
             args.message.channel.send(args.translator.translate("guildinit", []));
             args.logger.push(guild, args.translator.translate("gguildinit", [
-                args.message.author.tag,
+                args.string.escape(args.message.author.tag),
                 args.message.author.id
             ]));
         } else {
@@ -35,7 +35,7 @@ module.exports = {
                             }});
                             args.message.channel.send(args.translator.translate("guildresetmsg", []));
                             args.logger.push(guild, args.translator.translate("gguildreset", [
-                                args.message.author.tag,
+                                args.string.escape(args.message.author.tag),
                                 args.message.author.id
                             ]));
                         } else {

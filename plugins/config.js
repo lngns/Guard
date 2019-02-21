@@ -116,7 +116,7 @@ module.exports = {
                 break;
             case "export":
                 args.logger.push(guild, args.translator.translate("gconfigexported", [
-                    args.message.author.tag,
+                    args.string.escape(args.message.author.tag),
                     args.message.author.id
                 ]));
                 delete guild._id;
@@ -140,8 +140,8 @@ module.exports = {
             args.message.channel.send(args.translator.translate("configupdated", [key])); 
             args.database.collection("Guilds").findOneAndUpdate({ id: args.message.guild.id }, { "$set": updates });
             args.logger.push(guild, args.translator.translate("gconfigupdated", [
-                key, 
-                args.message.author.tag, 
+                args.string.escape(key), 
+                args.string.escape(args.message.author.tag), 
                 args.message.author.id
             ]));
         }
