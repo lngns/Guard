@@ -2,7 +2,7 @@ class StringUtil
 {
     escape(message = "")
     {
-        return message.replace(/(`|\||\n|\{|\})/ug, "\\$1");
+        return message.replace(/(`|\||\n|\{|\})/ug, "");
     }
 }
 
