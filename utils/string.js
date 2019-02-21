@@ -1,8 +1,8 @@
 class StringUtil
 {
-    strip(message = "")
+    escape(message = "")
     {
-        return message.replace(/`|\||\n/ug, " ");
+        return message.replace(/(`|\||\n|\{|\})/ug, "\\$1");
     }
 }
 
