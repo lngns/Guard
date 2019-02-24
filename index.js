@@ -75,9 +75,9 @@ Client.on("messageDelete", async (msg) => {
         let guild = await Database.collection("Guilds").findOne({ id: msg.guild.id });
         if(guild) Translator.change(guild.locale);
         if(guild && guild.logchannel != null) Logger.push(guild, Translator.translate("gmessagedeleted", [
-            String.escape(msg.content),
             String.escape(msg.author.tag),
-            msg.author.id
+            msg.author.id,
+            String.escape(msg.content)
         ]));
     }
 });
